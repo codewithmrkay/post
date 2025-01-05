@@ -1,0 +1,32 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@astrajs/collections": "^0.0.2",
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.7",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.469.0",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.3",
+    "next": "15.1.3",
+    "next-auth": "^4.24.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.6.1",
+    "remark-gfm": "^4.0.0",
+    "tailwindcss-motion": "^1.0.0"
+  },
+  "devDependencies": {
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
