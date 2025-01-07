@@ -73,7 +73,7 @@ export default function Chatbot() {
         <div ref={messagesEndRef} />
       </div>
       <form onSubmit={sendMessage} className="p-4 bg-white">
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <input
             type="text"
             value={input}
