@@ -42,7 +42,7 @@ const UploadCom2 = () => {
                 // Fetch the file and create a File object
                 const response = await fetch(media.src)
                 const blob = await response.blob()
-                const file = new File([blob], `file-${Date.now()}.${media.type === 'video' ? 'mp4' : 'jpg'}`, {
+                const file = new File([blob], `file-${media.src}`, {
                     type: media.type === 'video' ? 'video/mp4' : 'image/jpeg'
                 })
 
