@@ -1,51 +1,50 @@
 'use client'
-
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Upload from './Upload'
-const UploadCom2 = () => {
+import { Loader } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
+const UploadComponent = () => {
     const [showGrid, setShowGrid] = useState(false)
     const [isPosted, setIsPosted] = useState(false)
-    const [refreshPosts, setRefreshPosts] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
     const toggleGrid = () => {
         setShowGrid(!showGrid)
     }
 
     // Dummy data for media items
-    const mediaArray = [
-        { type: 'image', src: '/h1.jpg' },
-        { type: 'image', src: '/h2.jpg' },
-        { type: 'image', src: '/h3.jpg' },
-        { type: 'video', src: '/h4.mp4' },
-        { type: 'video', src: '/h5.mp4' },
-        { type: 'video', src: '/h6.mp4' },
-        { type: 'video', src: '/h7.mp4' },
-        { type: 'image', src: '/r1.jpg' },
-        { type: 'image', src: '/r2.webp' },
-        { type: 'video', src: '/r3.mp4' },
-        { type: 'video', src: '/r4.mp4' },
-        { type: 'video', src: '/r5.mp4' },
-        { type: 'video', src: '/r6.mp4' },
+    const mediaArray = [ 
+        { type: 'image', src: '/h2.jpg' }, 
+        { type: 'video', src: '/r5.mp4' }, 
+        { type: 'image', src: '/h3.jpg' }, 
+        { type: 'video', src: '/r4.mp4' }, 
+        { type: 'video', src: '/h5.mp4' }, 
+        { type: 'video', src: '/r3.mp4' }, 
+        { type: 'video', src: '/h7.mp4' }, 
+        { type: 'image', src: '/r1.jpg' }, 
+        { type: 'video', src: '/h4.mp4' }, 
+        { type: 'image', src: '/r2.webp' }, 
+        { type: 'image', src: '/h1.jpg' }, 
+        { type: 'video', src: '/r6.mp4' }, 
+        { type: 'video', src: '/h6.mp4' }, 
     ]
 
-    const handleUploadComplete = () => {
-        setRefreshPosts(!refreshPosts)
-    }
-
     const handlePostAll = async () => {
+        setIsLoading(true)
         try {
             // Post each media item to the database
             for (const media of mediaArray) {
                 const formData = new FormData()
-
+                
                 // Fetch the file and create a File object
                 const response = await fetch(media.src)
                 const blob = await response.blob()
-                const file = new File([blob], `file-${Date.now()}.${media.type === 'video' ? 'mp4' : 'jpg'}`, {
+                const file = new File([blob], `file-${media.src.replace(/\//g, "")}`, {
                     type: media.type === 'video' ? 'video/mp4' : 'image/jpeg'
                 })
-
+                
                 formData.append('file', file)
 
                 // Upload the file using the same API endpoint as individual uploads
@@ -61,19 +60,22 @@ const UploadCom2 = () => {
 
             // Update state to show all items have been posted
             setIsPosted(true)
-            handleUploadComplete()
+            
+            // Show alert with option to go to MyPost
+            if (confirm('All items posted successfully! Go to MyPost?')) {
+                router.push('/mypost')
+            }
         } catch (error) {
             console.error('Error posting all media:', error)
             alert('Failed to post all media. Please try again.')
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
         <div className="mx-auto p-4">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <div className="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-                    <Upload onUploadComplete={handleUploadComplete} />
-                </div>
                 <button
                     className="w-full py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
                     onClick={toggleGrid}
@@ -103,22 +105,22 @@ const UploadCom2 = () => {
                                 >
                                     <div key={index}>
                                         {media.type === 'image' ? (
-                                            <img
-                                                src={media.src}
-                                                alt={`media-${index}`}
-                                                className="w-full h-full object-cover"
+                                            <img 
+                                                src={media.src} 
+                                                alt={`media-${index}`} 
+                                                className="w-full h-full object-cover" 
                                             />
                                         ) : (
-                                            <video
-                                                controls
-                                                preload='auto'
-                                                autoPlay
-                                                muted
-                                                loop
+                                            <video 
+                                                controls 
+                                                preload='auto' 
+                                                autoPlay 
+                                                muted 
+                                                loop 
                                                 className="w-full h-full object-cover"
-                                            >
-                                                <source src={media.src} type="video/mp4" />
-                                                Your browser does not support the video tag.
+                                            > 
+                                                <source src={media.src} type="video/mp4" /> 
+                                                Your browser does not support the video tag. 
                                             </video>
                                         )}
                                     </div>
@@ -133,13 +135,23 @@ const UploadCom2 = () => {
                         >
                             <button
                                 onClick={handlePostAll}
-                                disabled={isPosted}
-                                className={`py-3 px-6 rounded-lg text-white font-medium transition-colors ${isPosted
-                                        ? 'bg-gray-400 cursor-not-allowed'
-                                        : 'bg-blue-500 hover:bg-blue-600'
-                                    }`}
+                                disabled={isPosted || isLoading}
+                                className={`py-3 px-6 rounded-lg text-white font-medium transition-colors flex items-center ${
+                                    isPosted 
+                                    ? 'bg-gray-400 cursor-not-allowed' 
+                                    : 'bg-blue-500 hover:bg-blue-600'
+                                }`}
                             >
-                                {isPosted ? 'Already Posted' : 'Post All'}
+                                {isLoading ? (
+                                    <>
+                                        <Loader className="w-5 h-5 mr-2 animate-spin" />
+                                        Posting...
+                                    </>
+                                ) : isPosted ? (
+                                    'Already Posted'
+                                ) : (
+                                    'Post All'
+                                )}
                             </button>
                         </motion.div>
                     </>
@@ -149,5 +161,5 @@ const UploadCom2 = () => {
     )
 }
 
-export default UploadCom2
+export default UploadComponent
 

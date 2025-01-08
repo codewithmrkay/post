@@ -13,6 +13,7 @@ export async function POST(req) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
+  console.log('file', file);
   const fileName = file.name;
   const fileType = file.type;
   const fileData = buffer.toString('base64');

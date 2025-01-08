@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../lib/mongodb';
-import Media from '../../../models/Media';
+import dbConnect from '@/lib/mongodb';
+import Media from '@/models/Media';
 
 export async function GET(req) {
   await dbConnect();
@@ -19,8 +19,12 @@ export async function GET(req) {
     query = { ...query, fileName: { $regex: fileName, $options: 'i' } };
   }
 
-  const media = await Media.find(query);
-
-  return NextResponse.json(media);
+  try {
+    const media = await Media.find(query).sort({ createdAt: -1 });
+    return NextResponse.json(media);
+  } catch (error) {
+    console.error('Error fetching media:', error);
+    return NextResponse.json({ error: 'Failed to fetch media' }, { status: 500 });
+  }
 }
 

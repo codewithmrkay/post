@@ -34,7 +34,7 @@
 //     // For now, we'll just show an alert
 //     alert('Profile saved successfully!')
 //   }
- 
+
 //   return (
 //     <div className="max-w-md mx-auto">
 //       <div className="relative mb-6">
@@ -100,7 +100,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Camera } from 'lucide-react'
+import { ArrowLeft, Camera, Loader } from 'lucide-react'
 import { useSession } from 'next-auth/react';
 
 export function ProfileCom() {
@@ -111,6 +111,8 @@ export function ProfileCom() {
   const [bio, setBio] = useState('Web Developer | Coffee Enthusiast')
   const [profileImage, setProfileImage] = useState('/profile-icon.svg')
   const fileInputRef = useRef(null)
+  const [loading, setLoading] = useState(true);
+  const [saving, isSaving] = useState(false);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
@@ -142,9 +144,13 @@ export function ProfileCom() {
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
+    finally {
+      setLoading(false)
+    }
   };
 
   const handleSave = async () => {
+    isSaving(true);
     try {
       const response = await fetch('/api/profile', {
         method: 'POST',
@@ -168,20 +174,29 @@ export function ProfileCom() {
       console.error('Error saving profile:', error);
       alert('Failed to save profile. Please try again.');
     }
+    finally {
+      isSaving(false);
+    }
   }
- 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader className="w-8 h-8 animate-spin text-blue-500" />
+      </div>
+    );
+  }
   return (
     <div className="max-w-md mx-auto">
       <div className="relative mb-6">
-        <button 
+        <button
           onClick={() => router.push('/dashboard/home')}
           className="absolute top-0 left-0 p-2 rounded-full text-gray-200 hover:text-gray-600 transition-colors"
           aria-label="Go back to home"
         >
-            <div className='flex items-center gap-2'>
-          <ArrowLeft className="w-6 h-6" />
-          Go Back
-            </div>
+          <div className='flex items-center gap-2'>
+            <ArrowLeft className="w-6 h-6" />
+            Go Back
+          </div>
         </button>
       </div>
       <div className="text-center">
@@ -193,18 +208,18 @@ export function ProfileCom() {
             height={128}
             className="rounded-full bg-white border-2 border-blue-600"
           />
-          <button 
+          <button
             onClick={() => fileInputRef.current.click()}
             className="absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors"
             aria-label="Change profile picture"
           >
             <Camera className="w-4 h-4" />
           </button>
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            onChange={handleImageChange} 
-            className="hidden" 
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleImageChange}
+            className="hidden"
             accept="image/*"
           />
         </div>
@@ -222,11 +237,17 @@ export function ProfileCom() {
         />
         <div className="cursor-not-allowed mt-4 text-gray-200">{email}</div>
       </div>
-      <button 
+      <button
         onClick={handleSave}
-        className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        className="flex items-center justify-center gap-2 mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
       >
-        Save Profile
+        {saving ? (
+          <>
+            <Loader className="animate-spin" />
+            Saving...
+          </>
+        ) :
+          'Save Profile'}
       </button>
     </div>
   )
