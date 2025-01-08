@@ -21,7 +21,7 @@ function page() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-800 p-4 rounded-lg min-h-screen">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-indigo-900 p-4 rounded-lg min-h-screen">
       <div>
         <div>
           {/* Rombo logo */}
@@ -47,7 +47,7 @@ function page() {
           </div>
         </div>
       </div>
-      <div className="motion-preset-confetti cursor-pointer flex items-center justify-center text-white bg-[#1c1c1c] hover:bg-gray-600  text-xl py-2 rounded-lg w-[30vw]"><SignInButton />
+      <div className="motion-preset-confetti cursor-pointer flex "><SignInButton />
       </div>
     </div>
   )

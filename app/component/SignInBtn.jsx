@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import { Loader } from 'lucide-react';
 export default function SignInButton() {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
@@ -21,13 +22,21 @@ export default function SignInButton() {
   };
 
   return (
-    <div>
+    <div className='flex gap-2 items-center justify-center'>
       {loading ? (
-        <p>Loading...</p>
+        <>
+          <Loader color='white' size={20} className="animate-spin"/>
+          <p>Loading...</p>
+        </>
       ) : session ? (
+        <>
+        <Loader color='white' size={25} className="animate-spin"/>
         <p>Redirecting...</p>
+        </>
       ) : (
-        <button onClick={handleSignIn}>Get Started</button>
+        <button 
+        className= 'w-60 font-semibold bg-purple-800 hover:bg-purple-900 text-white px-4 py-2 rounded-lg'
+        onClick={handleSignIn}>Get Started</button>
       )}
     </div>
   );
