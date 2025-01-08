@@ -41,7 +41,11 @@ const UploadComponent = () => {
                 // Fetch the file and create a File object
                 const response = await fetch(media.src)
                 const blob = await response.blob()
+<<<<<<< HEAD
                 const file = new File([blob], `file-${media.src.replace(/\//g, "")}`, {
+=======
+                const file = new File([blob], `file-${media.src}`, {
+>>>>>>> 9a0a619d8f6422c24791a10c2bc7612ff9c884d7
                     type: media.type === 'video' ? 'video/mp4' : 'image/jpeg'
                 })
                 
