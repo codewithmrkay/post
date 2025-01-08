@@ -45,35 +45,35 @@ export default function Insight() {
   };
 
   return (
-    <div className="bg-gray-800 p-4 rounded-lg">
+    <div className=" p-4 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">POST</h2>
-<div>
-  <div>
-  <button
-        onClick={handleClearAll}
-        disabled={isClearing || media.length === 0}
-        className={`absolute right-4 top-4 flex items-center gap-2 px-4 py-2 rounded-lg 
-          ${isClearing || media.length === 0 
-            ? 'bg-gray-400 cursor-not-allowed' 
-            : 'bg-red-500 hover:bg-red-600'} 
+      <div>
+        <div>
+          <button
+            onClick={handleClearAll}
+            disabled={isClearing || media.length === 0}
+            className={`absolute right-4 top-4 flex items-center gap-2 px-4 py-2 rounded-lg 
+          ${isClearing || media.length === 0
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-red-500 hover:bg-red-600'} 
           text-white transition-colors duration-200`}
-      >
-        {isClearing ? (
-          <>
-            <Loader className="w-5 h-5 animate-spin" />
-            <span>Clearing...</span>
-          </>
-        ) : (
-          <>
-            <Trash2 className="w-5 h-5" />
-            <span>Clear All</span>
-          </>
-        )}
-      </button>
-  </div>
-  <Posts key={refreshPosts}/>
-  </div>    
-  </div>
+          >
+            {isClearing ? (
+              <>
+                <Loader className="w-5 h-5 animate-spin" />
+                <span>Clearing...</span>
+              </>
+            ) : (
+              <>
+                <Trash2 className="w-5 h-5" />
+                <span>Clear All</span>
+              </>
+            )}
+          </button>
+        </div>
+        <Posts key={refreshPosts} />
+      </div>
+    </div>
   )
 }
 

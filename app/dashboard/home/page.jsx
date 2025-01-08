@@ -20,7 +20,7 @@ function page() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-center h-[80vh] gap-8">
+    <div className=" p-4 rounded-lg flex flex-col items-center justify-center h-[80vh] gap-8">
       <div>
         {/* Rombo logo */}
         <div className="flex items-baseline">
@@ -44,8 +44,9 @@ function page() {
           ))}
         </div>
       </div>
-      <div className='w-[40vw] motion-preset-seesaw-sm'>
-        <div className="flex items-center justify-center text-white bg-[#1c1c1c] hover:bg-gray-600  text-xl py-2 rounded-lg w-full"><SignOutButton /></div>
+      <div className='w-[40vw] motion-preset-seesaw-sm flex items-center justify-center'>
+        <div>
+           <SignOutButton /></div>
       </div>
     </div>
   )

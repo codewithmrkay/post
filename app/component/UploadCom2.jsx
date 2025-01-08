@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Upload from './Upload'
 
 const UploadComponent = () => {
     const [showGrid, setShowGrid] = useState(false)
@@ -63,7 +64,7 @@ const UploadComponent = () => {
             
             // Show alert with option to go to MyPost
             if (confirm('All items posted successfully! Go to MyPost?')) {
-                router.push('/mypost')
+                router.push('/dashboard/mypost')
             }
         } catch (error) {
             console.error('Error posting all media:', error)
@@ -72,12 +73,19 @@ const UploadComponent = () => {
             setIsLoading(false)
         }
     }
-
+    const [refreshPosts, setRefreshPosts] = useState(false);
+    
+        const handleUploadComplete = () => {
+          setRefreshPosts(!refreshPosts);
+        };
     return (
-        <div className="mx-auto p-4">
+        <div className="mx-auto flex flex-col items-center gap-3">
+            <div>
+                <Upload onUploadComplete={handleUploadComplete} />
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
-                    className="w-full py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+                    className="w-full px-4 py-3 text-white font-semibold bg-purple-600 rounded-md shadow-md hover:bg-purple-700"
                     onClick={toggleGrid}
                 >
                     Try Dummy Data
@@ -139,7 +147,7 @@ const UploadComponent = () => {
                                 className={`py-3 px-6 rounded-lg text-white font-medium transition-colors flex items-center ${
                                     isPosted 
                                     ? 'bg-gray-400 cursor-not-allowed' 
-                                    : 'bg-blue-500 hover:bg-blue-600'
+                                    : 'bg-purple-700 hover:bg-purple-800'
                                 }`}
                             >
                                 {isLoading ? (

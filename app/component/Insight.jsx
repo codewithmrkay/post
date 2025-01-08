@@ -59,8 +59,8 @@ export default function Insights() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <Loader className="w-8 h-8 animate-spin text-blue-500" />
+      <div className="flex justify-center items-center h-[70vh]">
+        <Loader className="w-8 h-8 animate-spin text-white" />
       </div>
     );
   }
@@ -81,7 +81,7 @@ export default function Insights() {
   }
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div className="bg-gradient-to-br from-purple-800 to-indigo-950 p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Content Reach Insights</h2>
       
       {/* Bar Chart */}
@@ -97,13 +97,15 @@ export default function Insights() {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis tickFormatter={formatNumber} />
-            <Tooltip formatter={(value) => formatNumber(value)} />
-            <Legend />
-            <Bar dataKey="images" fill="#8884d8" name="Images" />
-            <Bar dataKey="videos" fill="#82ca9d" name="Videos/Reels" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" />
+            <XAxis dataKey="name" tick={{ fill: '#ffffff' }} />
+            <YAxis tickFormatter={formatNumber} tick={{ fill: '#ffffff' }}/>
+            <Tooltip formatter={(value) => formatNumber(value)} 
+              contentStyle={{ backgroundColor: '#333', borderColor: '#333' }} itemStyle={{ color: '#ffffff' }}
+              />
+            <Legend wrapperStyle={{ color: '#ffffff' }} />
+            <Bar dataKey="images" fill="#4ade80" name="Images" />
+            <Bar dataKey="videos" fill="#ef4444" name="Videos/Reels" />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -128,19 +130,21 @@ export default function Insights() {
       <div className="flex justify-center gap-4 mb-8">
         <button
           onClick={() => fetchTopItems('reach')}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+          className="px-4 py-2  font-semibold bg-purple-600  shadow-md hover:bg-purple-700  text-white rounded-md transition-colors"
         >
           Most Reach
         </button>
         <button
           onClick={() => fetchTopItems('views')}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+          className="px-4 py-2  font-semibold bg-purple-600  shadow-md hover:bg-purple-700  text-white rounded-md transition-colors"
+        
         >
           Most Views
         </button>
         <button
           onClick={() => fetchTopItems('likes')}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+          className="px-4 py-2  font-semibold bg-purple-600  shadow-md hover:bg-purple-700  text-white rounded-md transition-colors"
+        
         >
           Most Likes
         </button>

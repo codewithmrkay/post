@@ -51,12 +51,12 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="text-black  min-w-4xl mx-auto my-8 border border-gray-300 rounded-lg shadow-lg overflow-hidden">
-      <div className="bg-blue-600 text-white p-4 flex items-center">
+    <div className="text-black  min-w-4xl mx-auto my-8 border-2 border-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-gradient-to-br from-purple-500 to-indigo-900 text-white p-4 flex items-center">
         <MessageCircle className="mr-2" />
         <h2 className="text-xl font-semibold">Chat with Media Assistant</h2>
       </div>
-      <div className="h-[50vh] overflow-y-auto p-4 bg-gray-100">
+      <div className="h-[50vh] overflow-y-auto p-4 bg-transparent">
         {messages.map((msg, index) => (
           <ChatMessage key={index} message={msg} />
         ))}
@@ -83,7 +83,8 @@ export default function Chatbot() {
           />
           <button 
             type="submit" 
-            className="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className=" text-white p-2 rounded-r-md  focus:outline-none focus:ring-2 focus:ring-blue-500
+             font-semibold bg-purple-600 rounded-md shadow-md hover:bg-purple-700 transition-colors"
           >
             <Send className="w-5 h-5" />
           </button>

@@ -36,12 +36,12 @@ export function Sidebar({ children }) {
   ]
 
   return (
-    <div className="flex min-h-screen bg-black">
+    <div className="flex min-h-screen bg-gradient-to-br from-purple-500 to-indigo-900">
       {/* Sidebar */}
       <aside
         className={`
           fixed left-0 top-0 z-40
-          h-full bg-[#1C1C1C] 
+          h-full bg-gradient-to-br from-purple-500 to-indigo-900 
           transition-all duration-300 ease-in-out
           ${isOpen ? 'w-64' : 'w-0 md:w-16'}
           ${isMobile && !isOpen ? '-translate-x-[150%]' : 'translate-x-0'}
@@ -63,9 +63,9 @@ export function Sidebar({ children }) {
                   href={item.href}
                   className={`
                     flex items-center gap-4 px-4 py-2
-                    text-gray-400 hover:text-white
-                    hover:bg-gray-800 transition-colors
-                    ${pathname === item.href ? 'bg-gray-800 text-white' : ''}
+                     text-gray-200
+                    hover:bg-purple-700 transition-colors
+                    ${pathname === item.href ? 'bg-purple-700 text-white' : ''}
                   `}
                 >
                   {item.icon}
@@ -88,13 +88,13 @@ export function Sidebar({ children }) {
       )}
 
       {/* Main content */}
-      <main className={`flex-1 p-4 transition-all duration-300 bg-[#1c1c1c] 
+      <main className={`flex-1 p-4 transition-all duration-300 bg-gradient-to-br from-purple-500 to-indigo-900
       border-gray-800 border-l-2
         ${isOpen ? 'md:ml-64' : 'md:ml-16'} ${isOpen ? 'z-0' : 'z-50'}`}>
         <div className="flex items-center gap-4 mb-4">
           <button
             onClick={toggleSidebar}
-            className="p-2 hover:bg-gray-800 rounded-lg"
+            className="p-2 hover:bg-purple-700 rounded-lg"
             aria-label="Toggle sidebar"
           >
             <PanelLeft className="w-5 h-5 text-white" />

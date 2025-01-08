@@ -181,7 +181,7 @@ export function ProfileCom() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Loader className="w-8 h-8 animate-spin text-blue-500" />
+        <Loader className="w-8 h-8 animate-spin text-white" />
       </div>
     );
   }
@@ -190,7 +190,7 @@ export function ProfileCom() {
       <div className="relative mb-6">
         <button
           onClick={() => router.push('/dashboard/home')}
-          className="absolute top-0 left-0 p-2 rounded-full text-gray-200 hover:text-gray-600 transition-colors"
+          className="absolute top-0 left-0 p-2 rounded-full text-white hover:text-gray-200 transition-colors"
           aria-label="Go back to home"
         >
           <div className='flex items-center gap-2'>
@@ -239,7 +239,7 @@ export function ProfileCom() {
       </div>
       <button
         onClick={handleSave}
-        className="flex items-center justify-center gap-2 mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        className="flex items-center justify-center gap-2 mt-6 w-full px-4 py-3 text-white font-semibold bg-purple-600 rounded-md shadow-md hover:bg-purple-700 transition-colors"
       >
         {saving ? (
           <>

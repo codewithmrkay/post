@@ -64,8 +64,8 @@ export default function Posts() {
     };
     if (loading) {
         return (
-          <div className="flex justify-center items-center h-screen">
-            <Loader className="w-8 h-8 animate-spin text-blue-500" />
+          <div className="flex justify-center items-center h-[70vh]">
+            <Loader className="w-8 h-8 animate-spin text-white" />
           </div>
         );
       }
@@ -87,7 +87,7 @@ export default function Posts() {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {media.map((item) => (
-                        <div key={item._id} className="relative group aspect-square bg-gray-900">
+                        <div key={item._id} className="relative group aspect-square shadow-xl rounded-lg bg-gray-900 ">
                             {/* Media Content */}
                             <div className="w-full h-full rounded-lg overflow-hidden">
                                 {item.fileType?.startsWith('image') ? (
