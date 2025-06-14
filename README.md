@@ -14,11 +14,11 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 
 ## Table of Contents
 
-- [Live Demo](#live-demo)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Contact](#contact)
+- 🌐[Live Demo](#live-demo)
+- ✨[Features](#features)
+- 🛠[Tech Stack](#tech-stack)
+- 📥[Installation](#installation)
+- 📞[Contact](#contact)
 
 ## 🌐Live Demo
 
