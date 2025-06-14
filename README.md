@@ -9,6 +9,16 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 
 ---
 
+## 📌 Table of Contents
+
+- [🚀 Demo](#-demo)
+- [✨ Features](#-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [📦 Installation](#-installation)
+- [📫 Contact](#-contact)
+
+---
+
 ## 📍 Live Demo
 
 🔗 [Visit the live app on Vercel](https://post-vu47.vercel.app)
@@ -47,3 +57,14 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 git clone https://github.com/codewithmrkay/post.git
 cd post
 npm install
+## 📫 Contact
+
+---
+
+## 📫 Contact
+
+- 🌐 Portfolio: [codewithmrkay.dev](https://codewithmrkay.dev)
+- 💼 LinkedIn: [linkedin.com/in/codewithmrkay](https://linkedin.com/in/codewithmrkay)
+- 🐦 Twitter: [@codewithmrkay](https://twitter.com/codewithmrkay)
+- 📷 Instagram: [@codewithmrkay](https://instagram.com/codewithmrkay)
+- 📬 Email: [youremail@example.com](mailto:youremail@example.com)
