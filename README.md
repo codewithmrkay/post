@@ -11,7 +11,7 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 
 ## 📌 Table of Contents
 
-- [🚀 Demo](#-demo)
+- [🚀 Demo](#-live-demo)
 - [✨ Features](#-features)
 - [🛠 Tech Stack](#-tech-stack)
 - [📦 Installation](#-installation)
@@ -43,9 +43,17 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 
 ---
 
-## ⚙️ Installation
+## 📫 Contact
 
-### Prerequisites
+- 🌐 Portfolio: [codewithmrkay.dev](https://codewithmrkay.dev)
+- 💼 LinkedIn: [linkedin.com/in/codewithmrkay](https://linkedin.com/in/codewithmrkay)
+- 🐦 Twitter: [@codewithmrkay](https://twitter.com/codewithmrkay)
+- 📷 Instagram: [@codewithmrkay](https://instagram.com/codewithmrkay)
+- 📬 Email: [youremail@example.com](mailto:youremail@example.com)
+---
+
+## ⚙️ Installation
+# Prerequisites
 
 - Node.js ≥ 18
 - MongoDB URI
@@ -57,14 +65,3 @@ A modern social media app built with **Next.js**, **MongoDB**, and **Gemini AI**
 git clone https://github.com/codewithmrkay/post.git
 cd post
 npm install
-## 📫 Contact
-
----
-
-## 📫 Contact
-
-- 🌐 Portfolio: [codewithmrkay.dev](https://codewithmrkay.dev)
-- 💼 LinkedIn: [linkedin.com/in/codewithmrkay](https://linkedin.com/in/codewithmrkay)
-- 🐦 Twitter: [@codewithmrkay](https://twitter.com/codewithmrkay)
-- 📷 Instagram: [@codewithmrkay](https://instagram.com/codewithmrkay)
-- 📬 Email: [youremail@example.com](mailto:youremail@example.com)
